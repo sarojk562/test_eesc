@@ -2,7 +2,7 @@
 /** The menu is technically the header of the site, it contains the styles for the drop down of the Search Bar. */
 header.menu { width: 100%; position: relative; z-index: 10; }
 
-header.menu div.menu-container { width: 100%; background-color: black; padding: 0 20px; text-align: left; }
+header.menu div.menu-container { width: 100%; background-color: #040a2b; padding: 0 20px; text-align: left; }
 
 header.menu div.menu-container div.menu-holder { position: relative; width: 100%; max-width: 1280px; margin: 0 auto; }
 

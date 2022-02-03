@@ -25,7 +25,7 @@ class Menu extends React.Component {
         var config = {
             headers: {'Access-Control-Allow-Origin': '*'}
         };
-        axios.get('http://localhost:3035/', config)
+        axios.get('http://localhost:3035', config)
         .then(response => {
             console.log('response: ', response)
             this.setState({ productData: response.data.total })

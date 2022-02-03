@@ -8,7 +8,8 @@
     "url": ""
   },
   "dependencies": {
-    "babel-preset-es2015": "^6.24.1"
+    "babel-preset-es2015": "^6.24.1",
+    "cors": "^2.8.5"
   },
   "scripts": {
     "globals": "npm i -g cross-env",
