@@ -21,6 +21,7 @@
 */
 const data      = require('./data');
 const http      = require('http');
+var url = require('url');
 const hostname  = 'localhost';
 const port      = 3035;
 
@@ -35,8 +36,11 @@ const port      = 3035;
 http.createServer(function (req, res) {
     // .. Here you can create your data response in a JSON format
     
+    var updatedData = data.filter(item => item.isActive)
     
-    res.write("Response goes in here..."); // Write out the default response
+    res.write(JSON.stringify(updatedData))
+    res.end()
+    // res.write("Response goes in here..."); // Write out the default response
     res.end(); //end the response
 }).listen( port );
 

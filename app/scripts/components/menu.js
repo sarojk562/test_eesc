@@ -3,6 +3,7 @@
  * 
  */
 import React from 'react';
+import axios from 'axios';
 
 class Menu extends React.Component {
 
@@ -13,8 +14,22 @@ class Menu extends React.Component {
     constructor() {
         super();
         this.state = {
-            showingSearch: false
+            showingSearch: false,
+            searchText: '',
+            productData: [],
+            searchData: []
         };
+    }
+
+    componentDidMount() {
+        var config = {
+            headers: {'Access-Control-Allow-Origin': '*'}
+        };
+        axios.get('http://localhost:3035/', config)
+        .then(response => {
+            console.log('response: ', response)
+            this.setState({ productData: response.data.total })
+        });
     }
 
     /**
@@ -38,7 +53,11 @@ class Menu extends React.Component {
         
         // Start Here
         // ...
-        
+
+        e.preventDefault();
+        this.setState({
+            searchText: e.target.value.toUpperCase()
+        });
 
     }
 
@@ -70,7 +89,7 @@ class Menu extends React.Component {
                     </div>
                 </div>
                 <div className={(this.state.showingSearch ? "showing " : "") + "search-container"}>
-                    <input type="text" onChange={(e) => this.onSearch(e)} />
+                    <input type="text" onChange={(e) => this.onSearch(e)} value={this.state.searchText.toUpperCase()}/>
                     <a href="#" onClick={(e) => this.showSearchContainer(e)}>
                         <i className="material-icons close">close</i>
                     </a>
