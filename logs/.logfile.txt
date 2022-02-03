@@ -8,3 +8,9 @@
 [3/2/2022 -- 19:49]  Scripts ran on main.js
 [3/2/2022 -- 19:52]  Scripts ran on main.js
 [3/2/2022 -- 19:52]  restarted!
+[3/2/2022 -- 19:55]  Info task started
+[3/2/2022 -- 19:55]  Mustache Templates ran on the HTML files
+[3/2/2022 -- 19:55]  Scripts ran on main.js
+[3/2/2022 -- 19:55]  Sass ran on files
+[3/2/2022 -- 19:55]  Scripts ran on main.js
+[3/2/2022 -- 19:56]  Scripts ran on main.js

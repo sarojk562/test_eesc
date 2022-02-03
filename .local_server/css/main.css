@@ -24,6 +24,14 @@ header.menu div.search-container input[type='text'] { min-width: 100%; font-size
 
 header.menu div.search-container i.close { position: absolute; right: 10px; top: 5px; font-size: 36px; line-height: 50px; }
 
+header.menu div.search-results { display: -webkit-box; display: -ms-flexbox; display: flex; }
+
+header.menu div.search-result-card { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; }
+
+header.menu div.search-result-card .product-image { max-height: 200px; }
+
+header.menu div.search-result-card div { margin: 10px 0; }
+
 /** This is the central home page */
 section#home { position: absolute; width: 100%; height: 100%; top: 0; left: 0; padding: 100px 20px 0; background-image: url("/img/header.jpg"); background-size: cover; background-repeat: no-repeat; }
 

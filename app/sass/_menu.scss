@@ -93,4 +93,20 @@ header.menu {
         }
     }
 
+    div.search-results {
+        display: flex;
+    }
+
+    div.search-result-card {
+        display: flex;
+        flex-direction: column;
+
+        .product-image {
+            max-height: 200px;
+        }
+
+        div {
+            margin: 10px 0;
+        }
+    }
 }
