@@ -10,8 +10,9 @@ class Menu extends React.Component {
      * Main constructor for the Menu Class
      * @memberof Menu
      */
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+        console.log('this.props :>> ', props);
         this.state = {
             showingSearch: false,
             searchText: '',
@@ -74,6 +75,21 @@ class Menu extends React.Component {
         }
     }
 
+    seeSearchResults() {
+        console.log('this.props :>> ', this.props);
+        this.props.seeSearchResults(this.state.searchText, this.state.searchData)
+        this.setState({
+            searchData: [],
+            searchText: ""
+        })
+    }
+
+    onSearchKeyDown(e) {
+        if (e.key === 'Enter') {
+            this.seeSearchResults()
+        }
+    }
+
     /**
      * Renders the default app in the window, we have assigned this to an element called root.
      * 
@@ -96,7 +112,7 @@ class Menu extends React.Component {
                             <a href="#" className="nav-item">INSPIRATION</a>
 
                             <div className="search-wrapper">
-                                <input type="search" onChange={(e) => this.onSearch(e)} value={this.state.searchText.toUpperCase()} placeholder="Search">
+                                <input type="search" onChange={(e) => this.onSearch(e)} onKeyDown={(e) => this.onSearchKeyDown(e)} value={this.state.searchText.toUpperCase()} placeholder="Search">
                                 </input>
                             </div>
                         </nav>
@@ -110,9 +126,9 @@ class Menu extends React.Component {
                                     <>
                                         <div className="search-number">
                                             <span>{`DISPLAYING ${this.getSearchNumber()} OF ${this.state.searchData.length} RESULTS`}</span>
-                                            <a href="#" className="see-results-link">
+                                            <span onClick={(e) => this.seeSearchResults(e)} className="see-results-link">
                                                 SEE ALL RESULTS
-                                            </a>
+                                            </span>
                                         </div>
                                         <div className="search-results">
 

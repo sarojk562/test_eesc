@@ -17,6 +17,7 @@ import ReactDOM from 'react-dom';
 
 import Menu from './components/menu';
 import Home from './components/home';
+import SearchResults from './components/searchResults'
 
 
 /**
@@ -30,11 +31,47 @@ class App extends React.Component {
      * @returns JSX
      * @memberof App
     */
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            showSearchResults: false,
+            searchText: "",
+            searchData: []
+        };
+
+        this.seeSearchResults = this.seeSearchResults.bind(this)
+        this.hideSearchResults = this.hideSearchResults.bind(this)
+    }
+
+    seeSearchResults(searchText, searchData) {
+        console.log('searchText :>> ', searchText);
+        console.log('searchData :>> ', searchData);
+        this.setState({
+            showSearchResults: true,
+            searchText: searchText,
+            searchData: searchData
+        })
+    }
+
+    hideSearchResults() {
+        this.setState({showSearchResults: false,
+            searchText: "",
+            searchData: []
+        })
+    }
+
     render() {
         return (
             <div className="App">
-                <Menu />
-                <Home />
+                <Menu seeSearchResults={this.seeSearchResults} />
+                {this.state.showSearchResults ?
+                    <SearchResults searchText={this.state.searchText}
+                        searchData={this.state.searchData} 
+                        hideSearchResults={this.hideSearchResults}
+                        />
+                    : <Home />
+                }
             </div>
         );
     }

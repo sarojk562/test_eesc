@@ -63,4 +63,18 @@ main a:visited { color: inherit; }
 
 main div.inner { width: 100%; height: auto; background-color: #960000; }
 
+main #searchResults div.search-results { display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; }
+
+main #searchResults div.search-result-card { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -webkit-box-align: center; -ms-flex-align: center; align-items: center; width: 25%; }
+
+main #searchResults div.search-result-card .product-image { max-height: 200px; }
+
+main #searchResults div.search-result-card div { margin: 10px; }
+
+main #searchResults .search-number { height: 40px; margin: 20px; display: -webkit-box; display: -ms-flexbox; display: flex; border-bottom: 1px solid #000000; }
+
+main #searchResults .search-results-header { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; margin-bottom: 25px; }
+
+main #searchResults .see-results-link { text-decoration: underline; color: black; cursor: pointer; margin-left: 20px; margin-top: 10px; display: block; }
+
 /*# sourceMappingURL=main.css.map */
