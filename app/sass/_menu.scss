@@ -19,7 +19,7 @@ header.menu {
         background-color: #040a2b;
         padding: 0 20px;
         text-align: left;
-        
+
         div.menu-holder {
             position: relative;
             width: 100%;
@@ -35,15 +35,17 @@ header.menu {
             text-align: left;
             display: inline-block;
         }
+
         nav {
             display: inline-block;
             margin-left: 60px;
 
-            i { 
-                color: white; 
+            i {
+                color: white;
                 font-size: 30px;
                 line-height: $lineHeightForNav;
             }
+
             i.search {
                 position: absolute;
                 right: 10px;
@@ -68,14 +70,17 @@ header.menu {
         position: absolute;
         background-color: white;
         z-index: 20;
-        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         width: 100%;
         padding: 5px;
         background-color: white;
         border-bottom: 1px solid #CCC;
         display: none;
-        &.showing { display: block; }
-        
+
+        &.showing {
+            display: block;
+        }
+
         input[type='text'] {
             min-width: 100%;
             font-size: 36px;
@@ -100,6 +105,8 @@ header.menu {
     div.search-result-card {
         display: flex;
         flex-direction: column;
+        align-items: center;
+        width: 25%;
 
         .product-image {
             max-height: 200px;
@@ -108,5 +115,38 @@ header.menu {
         div {
             margin: 10px;
         }
+    }
+
+    .search-wrapper {
+        display: inline-flex;
+    }
+
+    .search-wrapper input {
+        position: absolute;
+        right: 50px;
+        top: 20px;
+        height: 30px;
+        border-radius: 20px;
+        padding: 0 10px;
+    }
+
+    .search-results-wrapper {
+        background-color: #FFF;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .search-number {
+        height: 40px;
+        margin: 20px;
+        display: flex;
+        border-bottom: 1px solid #000000;
+    }
+
+    .see-results-link {
+        text-decoration: underline;
+        color: black;
+        cursor: pointer;
+        margin-left: 20px;
     }
 }

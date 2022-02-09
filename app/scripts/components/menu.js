@@ -22,13 +22,13 @@ class Menu extends React.Component {
 
     componentDidMount() {
         var config = {
-            headers: {'Access-Control-Allow-Origin': '*'}
+            headers: { 'Access-Control-Allow-Origin': '*' }
         };
         axios.get('http://localhost:3035', config)
-        .then(response => {
-            console.log('response: ', response)
-            this.setState({ productData: response.data })
-        });
+            .then(response => {
+                console.log('response: ', response)
+                this.setState({ productData: response.data })
+            });
     }
 
     /**
@@ -66,6 +66,14 @@ class Menu extends React.Component {
 
     }
 
+    getSearchNumber() {
+        if (this.state.searchData.length > 4) {
+            return 4
+        } else {
+            return this.state.searchData.length
+        }
+    }
+
     /**
      * Renders the default app in the window, we have assigned this to an element called root.
      * 
@@ -87,41 +95,46 @@ class Menu extends React.Component {
                             <a href="#" className="nav-item">STORES</a>
                             <a href="#" className="nav-item">INSPIRATION</a>
 
-                            <a href="#" onClick={(e) => this.showSearchContainer(e)}>
-                                <i className="material-icons search">search</i>
-                            </a>
+                            <div className="search-wrapper">
+                                <input type="search" onChange={(e) => this.onSearch(e)} value={this.state.searchText.toUpperCase()} placeholder="Search">
+                                </input>
+                            </div>
                         </nav>
                     </div>
                 </div>
-                <div className={(this.state.showingSearch ? "showing " : "") + "search-container"}>
-                    <input type="text" onChange={(e) => this.onSearch(e)} value={this.state.searchText.toUpperCase()} />
-                    <a href="#" onClick={(e) => this.showSearchContainer(e)}>
-                        <i className="material-icons close">close</i>
-                    </a>
-                    {this.state.searchText.length > 0 &&
-                        <div>
+                {this.state.searchText.length > 0 &&
+                    <div>
+                        <div className="search-results-wrapper">
                             {
                                 this.state.searchData.length > 0 ?
-                                    <div className="search-results">
-                                        {
-                                            this.state.searchData.map(item => {
-                                                return (
-                                                    <div className="search-result-card">
-                                                        <div><img src={item.picture} className="product-image" /></div>
-                                                        <div>{item.name}</div>
-                                                        <div>{item.price}</div>
-                                                    </div>
-                                                )
-                                            })
-                                        }
-                                    </div>
-                                    : <span>
-                                        No Products Found
+                                    <>
+                                        <div className="search-number">
+                                            <span>{`DISPLAYING ${this.getSearchNumber()} OF ${this.state.searchData.length} RESULTS`}</span>
+                                            <a href="#" className="see-results-link">
+                                                SEE ALL RESULTS
+                                            </a>
+                                        </div>
+                                        <div className="search-results">
+
+                                            {
+                                                this.state.searchData.slice(0, this.getSearchNumber()).map(item => {
+                                                    return (
+                                                        <div className="search-result-card">
+                                                            <div><img src={item.picture} className="product-image" /></div>
+                                                            <div style={{ textAlign: "center" }}>{item.name.toUpperCase()}</div>
+                                                            <div>{item.price}</div>
+                                                        </div>
+                                                    )
+                                                })
+                                            }
+                                        </div>
+                                    </>
+                                    : <span className="search-number">
+                                        NO PRODUCTS FOUND
                                     </span>
                             }
                         </div>
-                    }
-                </div>
+                    </div>}
             </header>
         );
     }
